@@ -1,126 +1,105 @@
+import { ArrowRight, Leaf } from "lucide-react";
 import { useState } from "react";
-import "./App.css";
-import {
-  ArrowRight,
-  Leaf,
-  Sparkles
-} from "lucide-react";
 import Login from "./Login";
 import Register from "./Register";
+import volunteer from "./assets/voluteer.jpg";
+import plant from "./assets/plant.png";
+import "./App.css";
 
-function App() {
-  const [page, setPage] = useState("home");
-
-  if (page === "login") {
-  return (
-    <Login
-      onBack={() => setPage("home")}
-      onRegister={() => setPage("register")}
-    />
-  );
-}
-
-if (page === "register") {
-  return (
-    <Register
-      onBack={() => setPage("home")}
-      onLogin={() => setPage("login")}
-    />
-  );
-}
-
+function LandingPage({ onLogin, onRegister }) {
   return (
     <div className="landing-page">
       <nav className="navbar">
         <div className="logo">
-          <Leaf size={22} strokeWidth={2.5} />
+          <Leaf size={24} />
           <span>EcoTask</span>
         </div>
 
-        <div className="nav-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#features">Features</a>
-
-          <button 
-            className="login-btn" 
-            onClick={() => setPage("login")}>
+        <div className="nav-actions">
+          <button className="nav-login" onClick={onLogin}>
             Log In
+          </button>
+
+          <button className="nav-signup" onClick={onRegister}>
+            Sign Up
           </button>
         </div>
       </nav>
 
-      <main className="hero" id="home">
-        <div className="hero-content">
-          <div className="eyebrow">
-            <Sparkles size={16} />
-            <span>Productivity with purpose</span>
-          </div>
+      <main className="hero">
+        <div className="hero-green">
+          <div className="hero-content">
+            <p className="eyebrow">Productivity with purpose</p>
 
-          <h1>
-            MAKING EVERY
-            <br />
-            TASK BETTER
-            <br />
-            <span>FOR THE PLANET.</span>
-          </h1>
+            <h1>
+              Making Every
+              <br />
+              Task Better for the
+              <br />
+              <span>Planet.</span>
+            </h1>
 
-          <p className="hero-description">
-            Manage your tasks while making a positive impact on the
-            environment. Stay productive, organized, and eco-friendly.
-          </p>
+            <p className="hero-description">
+              Manage your tasks while making a positive impact on the
+              environment. Stay productive, organized, and eco-friendly.
+            </p>
 
-          <div className="hero-buttons">
-            <button 
-              className="primary-btn"
-              onClick={() => setPage("login")}
-            >
-              Get Started
-              <ArrowRight size={18} />
-            </button>
+            <div className="hero-buttons">
+              <button className="primary-btn" onClick={onRegister}>
+                Get Started
+                <ArrowRight size={18} />
+              </button>
 
-            <button className="secondary-btn">
-              Learn More
-            </button>
+              <button className="secondary-btn">
+                Learn More
+              </button>
+            </div>
           </div>
         </div>
 
-        <div className="hero-visual">
-          <div className="glow"></div>
+        <div className="hero-image">
+          <img
+            src={volunteer}
+            alt="Volunteers helping the environment"
+          />
 
-          <div className="plant-card">
-            <div className="plant">
-              🌿
-            </div>
-
-            <div className="plant-text">
-              <strong>Make Every Task Count</strong>
-              <span>Small actions. Big impact.</span>
-            </div>
-          </div>
+          <img
+            className="plant-image"
+            src={plant}
+            alt="Plant"
+          />
         </div>
       </main>
-
-      <section className="features" id="features">
-        <div>
-          <span>01</span>
-          <h3>Organize</h3>
-          <p>Keep your everyday tasks in one place.</p>
-        </div>
-
-        <div>
-          <span>02</span>
-          <h3>Track</h3>
-          <p>Monitor your progress and stay productive.</p>
-        </div>
-
-        <div>
-          <span>03</span>
-          <h3>Impact</h3>
-          <p>Turn productivity into positive action.</p>
-        </div>
-      </section>
     </div>
+  );
+}
+
+function App() {
+  const [page, setPage] = useState("landing");
+
+  if (page === "login") {
+    return (
+      <Login
+        onBack={() => setPage("landing")}
+        onRegister={() => setPage("register")}
+      />
+    );
+  }
+
+  if (page === "register") {
+    return (
+      <Register
+        onBack={() => setPage("landing")}
+        onLogin={() => setPage("login")}
+      />
+    );
+  }
+
+  return (
+    <LandingPage
+      onLogin={() => setPage("login")}
+      onRegister={() => setPage("register")}
+    />
   );
 }
 
