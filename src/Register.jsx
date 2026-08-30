@@ -6,24 +6,40 @@ import {
   Leaf,
 } from "lucide-react";
 import "./App.css";
+import volunteer from "./assets/voluteer.jpg";
 
 function Register({ onBack, onLogin }) {
   return (
-    <div className="login-page">
-      <button className="back-btn" onClick={onBack}>
+    <div className="register-page">
+
+      <div className="register-background">
+        <img
+          src={volunteer}
+          alt="Volunteers helping the environment"
+        />
+
+        <div className="register-image-overlay"></div>
+
+        <div className="register-green-shape"></div>
+      </div>
+
+      <button
+        className="register-back"
+        onClick={onBack}
+      >
         <ArrowLeft size={18} />
-        Back
       </button>
 
-      <div className="login-card register-card">
-        <div className="login-logo">
-          <Leaf size={25} />
+      <div className="register-card">
+
+        <div className="register-logo">
+          <Leaf size={20} />
           <span>EcoTask</span>
         </div>
 
         <h1>Create Account</h1>
 
-        <p className="login-subtitle">
+        <p className="register-subtitle">
           Create your account and start making every task count.
         </p>
 
@@ -41,10 +57,11 @@ function Register({ onBack, onLogin }) {
             onLogin();
           }}
         >
+
           <label>Full Name</label>
 
-          <div className="input-box">
-            <User size={18} />
+          <div className="register-input">
+            <User size={17} />
 
             <input
               type="text"
@@ -53,10 +70,11 @@ function Register({ onBack, onLogin }) {
             />
           </div>
 
+
           <label>Email</label>
 
-          <div className="input-box">
-            <Mail size={18} />
+          <div className="register-input">
+            <Mail size={17} />
 
             <input
               type="email"
@@ -65,10 +83,11 @@ function Register({ onBack, onLogin }) {
             />
           </div>
 
+
           <label>Password</label>
 
-          <div className="input-box">
-            <Lock size={18} />
+          <div className="register-input">
+            <Lock size={17} />
 
             <input
               type="password"
@@ -77,10 +96,11 @@ function Register({ onBack, onLogin }) {
             />
           </div>
 
+
           <label>Confirm Password</label>
 
-          <div className="input-box">
-            <Lock size={18} />
+          <div className="register-input">
+            <Lock size={17} />
 
             <input
               type="password"
@@ -89,26 +109,27 @@ function Register({ onBack, onLogin }) {
             />
           </div>
 
+
           <button
             type="submit"
-            className="login-submit"
+            className="register-submit"
           >
             Create Account
           </button>
+
         </form>
 
-        <p className="signup-text">
+        <p className="register-login">
           Already have an account?{" "}
-          <a
-            href="#login"
-            onClick={(e) => {
-              e.preventDefault();
-              onLogin();
-            }}
+
+          <button
+            type="button"
+            onClick={onLogin}
           >
             Log In
-          </a>
+          </button>
         </p>
+
       </div>
     </div>
   );

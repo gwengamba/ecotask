@@ -1,78 +1,70 @@
-import { ArrowRight, Leaf } from "lucide-react";
+import { Leaf } from "lucide-react";
 import { useState } from "react";
 import Login from "./Login";
 import Register from "./Register";
 import volunteer from "./assets/voluteer.jpg";
-import plant from "./assets/plant.png";
 import "./App.css";
 
 function LandingPage({ onLogin, onRegister }) {
   return (
     <div className="landing-page">
-      <nav className="navbar">
-        <div className="logo">
-          <Leaf size={24} />
-          <span>EcoTask</span>
-        </div>
-
-        <div className="nav-actions">
-          <button className="nav-login" onClick={onLogin}>
-            Log In
-          </button>
-
-          <button className="nav-signup" onClick={onRegister}>
-            Sign Up
-          </button>
-        </div>
-      </nav>
 
       <main className="hero">
+
+        {/* Background Image */}
+        <div className="hero-image">
+          <img
+            src={volunteer}
+            alt="Volunteers helping the environment"
+          />
+        </div>
+
+        {/* Green Overlay */}
         <div className="hero-green">
           <div className="hero-content">
-            <p className="eyebrow">Productivity with purpose</p>
 
             <h1>
               Making Every
               <br />
               Task Better for the
               <br />
-              <span>Planet.</span>
+              Planet.
             </h1>
 
-            <p className="hero-description">
-              Manage your tasks while making a positive impact on the
-              environment. Stay productive, organized, and eco-friendly.
-            </p>
-
-            <div className="hero-buttons">
-              <button className="primary-btn" onClick={onRegister}>
-                Get Started
-                <ArrowRight size={18} />
-              </button>
-
-              <button className="secondary-btn">
-                Learn More
-              </button>
-            </div>
           </div>
         </div>
 
-        <div className="hero-image">
-          <img
-            src={volunteer}
-            alt="Volunteers helping the environment"
-          />
+        {/* Navbar */}
+        <nav className="navbar">
 
-          <img
-            className="plant-image"
-            src={plant}
-            alt="Plant"
-          />
-        </div>
+          <div className="logo">
+            <Leaf size={20} />
+            <span>EcoTask</span>
+          </div>
+
+          <div className="nav-actions">
+            <button
+              className="nav-login"
+              onClick={onLogin}
+            >
+              Log In
+            </button>
+
+            <button
+              className="nav-signup"
+              onClick={onRegister}
+            >
+              Sign Up
+            </button>
+          </div>
+
+        </nav>
+
       </main>
     </div>
   );
 }
+
 
 function App() {
   const [page, setPage] = useState("landing");
