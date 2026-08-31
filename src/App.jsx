@@ -1,58 +1,106 @@
-import { Leaf } from "lucide-react";
+import { Leaf, Check } from "lucide-react";
 import { useState } from "react";
 
 import Login from "./Login";
 import Register from "./Register";
-import RoleSelection from "./RoleSelection";
 
 import volunteer from "./assets/voluteer.jpg";
-
-import "./App.css";
 
 
 /* =========================================================
    LANDING PAGE
 ========================================================= */
 
-function LandingPage({ onLogin, onRegister }) {
+function LandingPage({ onGetStarted }) {
   return (
-    <div className="landing-page">
+    <div className="min-h-screen w-full bg-[#00140d] text-white">
 
-      <main className="hero">
+      <main className="relative min-h-screen overflow-hidden">
 
-        {/* BACKGROUND IMAGE */}
-        <div className="hero-image">
+        {/* =================================================
+            BACKGROUND IMAGE
+        ================================================= */}
+
+        <div className="absolute inset-0">
+
           <img
             src={volunteer}
             alt="Volunteers helping the environment"
+            className="
+              h-full
+              w-full
+              object-cover
+              object-center
+            "
           />
-        </div>
-
-
-        {/* GREEN SHAPE */}
-        <div className="hero-green">
-
-          <div className="hero-content">
-
-            <h1>
-              Making Every
-              <br />
-              Task Better for the
-              <br />
-              Planet.
-            </h1>
-
-          </div>
 
         </div>
 
 
-        {/* NAVBAR */}
-        <nav className="navbar">
+        {/* =================================================
+            DARK GREEN OVERLAY
+        ================================================= */}
 
-          <div className="logo">
+        <div
+          className="
+            absolute
+            inset-0
+            bg-gradient-to-r
+            from-[#00150d]
+            via-[#002417]/90
+            to-[#002416]/65
+          "
+        />
 
-            <Leaf size={20} />
+
+        {/* =================================================
+            EXTRA DARK OVERLAY
+            FOR READABLE TEXT
+        ================================================= */}
+
+        <div
+          className="
+            absolute
+            inset-0
+            bg-black/25
+          "
+        />
+
+
+        {/* =================================================
+            NAVBAR
+        ================================================= */}
+
+        <nav
+          className="
+            relative
+            z-30
+            flex
+            h-20
+            items-center
+            px-8
+            md:px-12
+            lg:px-20
+          "
+        >
+
+          {/* LOGO */}
+
+          <div
+            className="
+              flex
+              items-center
+              gap-2
+              text-2xl
+              font-bold
+            "
+          >
+
+            <Leaf
+              size={24}
+              strokeWidth={2}
+              className="text-green-400"
+            />
 
             <span>
               EcoTask
@@ -60,27 +108,123 @@ function LandingPage({ onLogin, onRegister }) {
 
           </div>
 
+        </nav>
 
-          <div className="nav-actions">
+
+        {/* =================================================
+            HERO CONTENT
+        ================================================= */}
+
+        <section
+          className="
+            relative
+            z-20
+            flex
+            min-h-[calc(100vh-80px)]
+            items-center
+            px-8
+            md:px-12
+            lg:px-20
+          "
+        >
+
+          <div
+            className="
+              w-full
+              max-w-3xl
+              pb-20
+            "
+          >
+
+            {/* SMALL TITLE */}
+
+            <p
+              className="
+                mb-5
+                text-xs
+                font-bold
+                uppercase
+                tracking-[0.25em]
+                text-green-400
+                md:text-sm
+              "
+            >
+              Welcome to EcoTask
+            </p>
+
+
+            {/* MAIN TITLE */}
+
+            <h1
+              className="
+                max-w-3xl
+                text-5xl
+                font-extrabold
+                leading-[1.05]
+                tracking-tight
+                text-white
+                sm:text-6xl
+                md:text-7xl
+                lg:text-8xl
+              "
+            >
+
+              Making Every Task
+
+              <br />
+
+              <span className="text-green-400">
+                Better for the Planet.
+              </span>
+
+            </h1>
+
+
+            {/* DESCRIPTION */}
+
+            <p
+              className="
+                mt-7
+                max-w-xl
+                text-base
+                leading-7
+                text-white/85
+                md:text-lg
+              "
+            >
+              Manage your tasks, stay organized, and make a
+              positive impact on the environment.
+            </p>
+
+
+            {/* GET STARTED */}
 
             <button
-              className="nav-login"
-              onClick={onLogin}
+              onClick={onGetStarted}
+              className="
+                mt-9
+                rounded-lg
+                bg-green-500
+                px-8
+                py-4
+                text-sm
+                font-bold
+                text-black
+                shadow-lg
+                shadow-green-900/30
+                transition
+                duration-200
+                hover:bg-green-400
+                hover:shadow-green-500/20
+                active:scale-95
+              "
             >
-              Login
-            </button>
-
-
-            <button
-              className="nav-signup"
-              onClick={onRegister}
-            >
-              Sign Up
+              Get Started
             </button>
 
           </div>
 
-        </nav>
+        </section>
 
       </main>
 
@@ -95,42 +239,194 @@ function LandingPage({ onLogin, onRegister }) {
 
 function RegistrationSubmitted({ onBack }) {
   return (
-    <div className="success-overlay">
+    <div
+      className="
+        fixed
+        inset-0
+        z-50
+        flex
+        items-center
+        justify-center
+        overflow-hidden
+        bg-black
+      "
+    >
 
-      <div className="success-card">
+      {/* BACKGROUND */}
+
+      <div className="absolute inset-0">
+
+        <img
+          src={volunteer}
+          alt="Volunteers helping the environment"
+          className="
+            h-full
+            w-full
+            object-cover
+          "
+        />
+
+      </div>
+
+
+      {/* GREEN/DARK OVERLAY */}
+
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-r
+          from-[#00150d]/95
+          via-[#00351f]/80
+          to-[#002417]/60
+        "
+      />
+
+
+      {/* LEFT SIDE TITLE */}
+
+      <div
+        className="
+          absolute
+          left-8
+          top-1/2
+          z-10
+          hidden
+          -translate-y-1/2
+          md:left-12
+          md:block
+          lg:left-20
+        "
+      >
+
+        <h1
+          className="
+            text-5xl
+            font-extrabold
+            leading-[1.05]
+            text-white
+            md:text-6xl
+            lg:text-7xl
+          "
+        >
+
+          Making Every Task
+
+          <br />
+
+          <span className="text-green-400">
+            Better for the Planet.
+          </span>
+
+        </h1>
+
+      </div>
+
+
+      {/* SUCCESS CARD */}
+
+      <div
+        className="
+          relative
+          z-20
+          mx-6
+          w-full
+          max-w-md
+          rounded-xl
+          bg-white
+          px-8
+          py-9
+          text-center
+          shadow-2xl
+        "
+      >
 
         {/* CHECK */}
-        <div className="success-check">
-          ✓
+
+        <div
+          className="
+            mx-auto
+            flex
+            h-16
+            w-16
+            items-center
+            justify-center
+            rounded-full
+            border-2
+            border-green-500
+          "
+        >
+
+          <Check
+            size={34}
+            strokeWidth={2}
+            className="text-green-500"
+          />
+
         </div>
 
 
         {/* TITLE */}
-        <h2>
+
+        <h2
+          className="
+            mt-5
+            text-2xl
+            font-bold
+            text-[#215b36]
+          "
+        >
           Registration Submitted!
         </h2>
 
 
         {/* MESSAGE */}
-        <p>
-          Your organizer account has been successfully
-          registered and is currently pending admin
-          approval.
-        </p>
 
-
-        <p>
-          You will be able to log in once an
-          administrator approves your account.
-        </p>
-
-
-        {/* BACK TO FIRST PAGE */}
-        <button
-          className="success-back"
-          onClick={onBack}
+        <p
+          className="
+            mt-4
+            text-sm
+            leading-6
+            text-gray-700
+          "
         >
-          Back
+          Your volunteer account has been successfully
+          registered.
+        </p>
+
+
+        <p
+          className="
+            mt-3
+            text-sm
+            leading-6
+            text-gray-700
+          "
+        >
+          You can now log in to your EcoTask account.
+        </p>
+
+
+        {/* BACK */}
+
+        <button
+          onClick={onBack}
+          className="
+            mt-7
+            w-full
+            rounded-lg
+            bg-green-500
+            px-6
+            py-3
+            text-sm
+            font-bold
+            text-black
+            transition
+            hover:bg-green-400
+            active:scale-95
+          "
+        >
+          Back to Home
         </button>
 
       </div>
@@ -148,17 +444,12 @@ function App() {
 
   const [page, setPage] = useState("landing");
 
-  const [showRoleSelection, setShowRoleSelection] =
-    useState(false);
-
-  const [role, setRole] = useState(null);
-
   const [showSubmitted, setShowSubmitted] =
     useState(false);
 
 
   /* =======================================================
-     LOGIN
+     LOGIN PAGE
   ======================================================= */
 
   if (page === "login") {
@@ -170,10 +461,8 @@ function App() {
           setPage("landing");
         }}
 
-
         onRegister={() => {
-          setPage("landing");
-          setShowRoleSelection(true);
+          setPage("register");
         }}
 
       />
@@ -182,7 +471,7 @@ function App() {
 
 
   /* =======================================================
-     REGISTER
+     REGISTER PAGE
   ======================================================= */
 
   if (page === "register") {
@@ -190,19 +479,26 @@ function App() {
     return (
       <Register
 
-        role={role}
+        /* Volunteer only */
 
+        role="volunteer"
+
+
+        /* BACK */
 
         onBack={() => {
           setPage("landing");
-          setShowRoleSelection(true);
         }}
 
+
+        /* LOGIN */
 
         onLogin={() => {
           setPage("login");
         }}
 
+
+        /* REGISTRATION SUCCESS */
 
         onOrganizerSubmitted={() => {
 
@@ -218,7 +514,7 @@ function App() {
 
 
   /* =======================================================
-     LANDING
+     LANDING PAGE
   ======================================================= */
 
   return (
@@ -226,56 +522,16 @@ function App() {
 
       <LandingPage
 
-        onLogin={() => {
-          setPage("login");
-        }}
-
-
-        onRegister={() => {
-          setShowRoleSelection(true);
+        onGetStarted={() => {
+          setPage("register");
         }}
 
       />
 
 
-      {/* ROLE SELECTION */}
-
-      {showRoleSelection && (
-
-        <RoleSelection
-
-          onClose={() => {
-            setShowRoleSelection(false);
-          }}
-
-
-          onVolunteer={() => {
-
-            setRole("volunteer");
-
-            setShowRoleSelection(false);
-
-            setPage("register");
-
-          }}
-
-
-          onOrganizer={() => {
-
-            setRole("organizer");
-
-            setShowRoleSelection(false);
-
-            setPage("register");
-
-          }}
-
-        />
-
-      )}
-
-
-      {/* REGISTRATION SUBMITTED */}
+      {/* =================================================
+          REGISTRATION SUBMITTED
+      ================================================= */}
 
       {showSubmitted && (
 
@@ -283,15 +539,7 @@ function App() {
 
           onBack={() => {
 
-            /*
-              BACK TO THE VERY FIRST SCREEN
-            */
-
             setShowSubmitted(false);
-
-            setShowRoleSelection(false);
-
-            setRole(null);
 
             setPage("landing");
 
